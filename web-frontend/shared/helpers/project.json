@@ -1,0 +1,19 @@
+{
+  "name": "helpers",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "shared/helpers/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/shared/helpers",
+        "main": "shared/helpers/src/index.ts",
+        "tsConfig": "shared/helpers/tsconfig.lib.json",
+        "assets": ["shared/helpers/*.md"]
+      }
+    }
+  }
+}
