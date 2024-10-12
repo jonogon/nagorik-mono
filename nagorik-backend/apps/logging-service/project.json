@@ -1,0 +1,26 @@
+{
+  "name": "logging-service",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/logging-service/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "logging-service:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "logging-service:build:development"
+        },
+        "production": {
+          "buildTarget": "logging-service:build:production"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "file-upload-service",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/file-upload-service/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "file-upload-service:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "file-upload-service:build:development"
+        },
+        "production": {
+          "buildTarget": "file-upload-service:build:production"
+        }
+      }
+    }
+  }
+}
