@@ -3,22 +3,28 @@
  * This is only a minimal backend to get started.
  */
 
-import { NestFactory } from "@nestjs/core";
-import { MicroserviceOptions, Transport } from "@nestjs/microservices";
-import { AppModule } from "./app/app.module";
-import { Logger } from "@nestjs/common";
+import { Logger } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { MicroserviceOptions,Transport } from '@nestjs/microservices';
+
+import { AppModule } from './app/app.module';
 
 const logger = new Logger();
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
-    transport: Transport.TCP,
+    transport: Transport.RMQ,
     options: {
-      host: "127.0.0.1",
-      port: 8888
+      urls: ['amqp://localhost:5669'],
+      queue: 'api_service_queue',
+      queueOptions: {
+        durable: false
+      },
     }
   });
+
   await app.listen();
   logger.log("API Service is listening...");
 }
+
 bootstrap();
