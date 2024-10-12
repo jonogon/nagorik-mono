@@ -9,11 +9,14 @@ import { AppService } from './app.service';
     ClientsModule.register([
       {
         name: 'API_SERVICE',
-        transport: Transport.TCP,
+        transport: Transport.RMQ,
         options: {
-          host: 'localhost',
-          port: 8888
-        }
+          urls: ['amqp://localhost:5669'],
+          queue: 'api_service_queue',
+          queueOptions: {
+            durable: false
+          },
+        },
       }
     ])
   ],
