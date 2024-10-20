@@ -7,7 +7,7 @@ import { Logger } from '@nestjs/common';
 export class BcryptService {
   private readonly logger = new Logger(BcryptService.name);
 
-  constructor(private readonly configService: ConfigService) {}
+  constructor() {}
 
   async hash(password: string): Promise<string> {
     try {
