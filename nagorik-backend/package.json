@@ -29,6 +29,7 @@
     "amqp-connection-manager": "^4.1.14",
     "amqplib": "^0.10.4",
     "axios": "^1.6.0",
+    "bcrypt": "^5.1.1",
     "mongoose": "^8.7.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0"
@@ -49,6 +50,7 @@
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
+    "@types/bcrypt": "^5.0.2",
     "@types/jest": "^29.5.12",
     "@types/node": "~18.16.9",
     "eslint": "^9.8.0",
