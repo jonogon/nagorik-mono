@@ -6,7 +6,7 @@ import { BcryptService } from "@nagorik-backend/utils";
 import { userSchema } from "@nagorik-backend/db-models";
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'user-model', schema: userSchema }])],
+  imports: [MongooseModule.forFeature([{ name: 'user', schema: userSchema }])],
   controllers: [AuthController],
   providers: [AuthService, BcryptService],
 })

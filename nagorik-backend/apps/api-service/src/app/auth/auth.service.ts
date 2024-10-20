@@ -8,7 +8,7 @@ import { BcryptService } from '@nagorik-backend/utils';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly bcryptService: BcryptService,@InjectModel('user-model') private userModel: Model<UserInterface>) {}
+  constructor(private readonly bcryptService: BcryptService,@InjectModel('user') private userModel: Model<UserInterface>) {}
 
   async sendOtp(userId: string, phone: string): Promise<{ message: string }> {
     const otp = Math.floor(1000 + Math.random() * 9000);
