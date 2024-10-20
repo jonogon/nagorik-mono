@@ -1,0 +1,9 @@
+{
+  "name": "db-models",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/db-models/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project db-models --web",
+  "targets": {}
+}
