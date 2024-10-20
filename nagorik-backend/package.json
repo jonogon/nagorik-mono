@@ -11,7 +11,7 @@
     "test:api-gateway": "pnpm nx test api-gateway",
     "e2e:api-gateway": "pnpm nx e2e api-gateway-e2e",
     "dev:api-service": "NODE_ENV=dev pnpm nx serve api-service ",
-    "prod:api-service": "NODE_ENV=dev pnpm nx serve api-service ",
+    "prod:api-service": "NODE_ENV=prod pnpm nx serve api-service ",
     "start:api-service": "pnpm nx start api-service",
     "build:api-service": "pnpm nx build api-service",
     "lint:api-service": "pnpm nx lint api-service",
