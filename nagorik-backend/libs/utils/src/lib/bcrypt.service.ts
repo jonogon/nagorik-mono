@@ -11,7 +11,7 @@ export class BcryptService {
 
   async hash(password: string): Promise<string> {
     try {
-      const workFactor = Number(process.env['BCRYPT_WORK_FACTOR']);
+      const workFactor = 10;
       const salt = await bcrypt.genSalt(workFactor);
       const hashPass = await bcrypt.hash(password, salt);
       return hashPass;

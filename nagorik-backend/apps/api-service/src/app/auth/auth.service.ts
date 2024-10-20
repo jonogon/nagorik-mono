@@ -2,17 +2,18 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
-import { UserOtpModel } from '@nagorik-backend/db-models';
-import { UserOtpInterface } from '@nagorik-backend/interfaces';
+import { UserOtpModel, userSchema } from '@nagorik-backend/db-models';
+import { UserInterface, UserOtpInterface } from '@nagorik-backend/interfaces';
 import { BcryptService } from '@nagorik-backend/utils';
 
 @Injectable()
 export class AuthService {
+  constructor(private readonly bcryptService: BcryptService,@InjectModel('user-model') private userModel: Model<UserInterface>) {}
+
   async sendOtp(userId: string, phone: string): Promise<{ message: string }> {
     const otp = Math.floor(1000 + Math.random() * 9000);
-    const bcryptService = new BcryptService();
     const newOtp: UserOtpInterface = {
-      otp: await bcryptService.hash(otp.toString()),
+      otp: await this.bcryptService.hash(otp.toString()),
       userId,
       deliveryMethod: {
         type: 'sms',
@@ -32,13 +33,12 @@ export class AuthService {
 
   async verifyOtp(userId: string, otp: string): Promise<{ message: string }> {
     const userOtp = await UserOtpModel.findOne({ userId });
-    const bcryptService = new BcryptService();
 
     if (!userOtp) {
       return { message: 'Invalid User' };
     }
 
-    if (!await bcryptService.compare(userOtp.otp, otp)) {
+    if (!(await this.bcryptService.compare(userOtp.otp, otp))) {
       return { message: 'Invalid OTP' };
     }
 
@@ -47,5 +47,26 @@ export class AuthService {
     }
 
     return { message: 'OTP verified' };
+  }
+
+  async createUser(
+    phone: string,
+    fullname: string,
+    password: string,
+    email?: string
+  ): Promise<{ message: string }> {
+    const hashedPassword = await this.bcryptService.hash(password);
+
+    const userObj: UserInterface = {
+      phone: String(phone),
+      fullName: String(fullname),
+      password: hashedPassword,
+      email: String(email),
+      roles: ['user'],
+      isPhoneVerified: false,
+    };
+
+    await this.userModel.create(userObj);
+    return { message: `User created` };
   }
 }

@@ -20,4 +20,16 @@ export class AppService {
       })
     );
   }
+
+  createUser(phone: string, fullname: string, password: string, email?: string) {
+    const pattern = { cmd: 'create-user' };
+    const payload = { phone, fullname, password, email };
+    return this.apiClient.send<string>(pattern, payload).pipe(
+      map((response) => {
+        return {
+          response,
+        };
+      })
+    );
+  }
 }

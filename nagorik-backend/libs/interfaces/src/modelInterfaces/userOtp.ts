@@ -1,4 +1,3 @@
-import { Types } from 'mongoose'
 import { CorrectedDocument } from '../typeInterfaces/type'
 
 type DeliveryMethodType = 'sms' | 'email' | 'app-notification' | 'push-notification';

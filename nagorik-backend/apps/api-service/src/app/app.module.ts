@@ -7,6 +7,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import microserviceConfig from '../config/microservice';
+import { AuthController } from './auth/auth.controller';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,6 +20,7 @@ import microserviceConfig from '../config/microservice';
     MongooseModule.forRootAsync({
       useClass: MongoDbConnectionService,
     }),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
