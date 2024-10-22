@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 
 import { AppService } from './app.service';
+import { PostInterface } from '@nagorik-backend/interfaces';
 
 @Controller()
 export class AppController {
@@ -26,5 +27,16 @@ export class AppController {
   ) {
     console.log('create-user');
     return this.appService.createUser(phone, fullname, password, email);
+  }
+
+  @Post('/posts')
+  createPost(
+    @Body('payload') payload: PostInterface,
+  ) {
+
+    console.log('create-post');
+    payload.userId = '67154337edda98d0ce63fb2d';
+    console.log(payload);
+    return this.appService.createPost(payload);
   }
 }
