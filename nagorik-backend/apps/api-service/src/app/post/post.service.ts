@@ -12,10 +12,15 @@ export class PostService {
 
   async createPost(
     postObj: PostInterface
-  ): Promise<{ message: string }> {
+  ): Promise<any> {
     console.log('create-post',postObj);
-    const post = await this.postModel.create(postObj);
-    console.log('post',post);
-    return { message: `Post created` };
+    const newPost = await this.postModel.create(postObj);
+    return newPost;
+  }
+
+  async viewAllPosts(): Promise<any> {
+    const posts = await this.postModel.find();
+    console.log('post');
+    return posts;
   }
 }

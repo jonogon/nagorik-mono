@@ -54,7 +54,7 @@ export class AuthService {
     fullname: string,
     password: string,
     email?: string
-  ): Promise<{ message: string }> {
+  ): Promise<any> {
     const hashedPassword = await this.bcryptService.hash(password);
 
     const userObj: UserInterface = {
@@ -66,7 +66,7 @@ export class AuthService {
       isPhoneVerified: false,
     };
 
-    await this.userModel.create(userObj);
-    return { message: `User created` };
+    const newUser = await this.userModel.create(userObj);
+    return newUser;
   }
 }

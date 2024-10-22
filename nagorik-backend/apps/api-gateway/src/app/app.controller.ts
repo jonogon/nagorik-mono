@@ -39,4 +39,11 @@ export class AppController {
     console.log(payload);
     return this.appService.createPost(payload);
   }
+
+  @Get('/posts')
+  viewAllPosts() {
+
+    console.log('view-all-posts');
+    return this.appService.viewAllPost('payload');
+  }
 }
