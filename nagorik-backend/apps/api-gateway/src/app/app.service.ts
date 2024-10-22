@@ -44,4 +44,16 @@ export class AppService {
       })
     );
   }
+
+  viewAllPost(payload: any) {
+    const pattern = { cmd: 'view-all-posts' };
+    // const payload = { phone, fullname, password, email };
+    return this.apiClient.send<string>(pattern, payload).pipe(
+      map((response) => {
+        return {
+          response,
+        };
+      })
+    );
+  }
 }

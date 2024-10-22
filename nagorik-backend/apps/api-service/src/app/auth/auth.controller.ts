@@ -25,6 +25,7 @@ export class AuthController {
   async createUser(payload: any) {
 
     const createdUser = await this.authService.createUser(payload.phone, payload.fullname, payload.password, payload.email);
+    createdUser.password = undefined;
     return createdUser;
 
   }

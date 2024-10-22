@@ -15,4 +15,10 @@ export class PostController {
     );
     return createdPost;
   }
+
+  @MessagePattern({ cmd: 'view-all-posts' })
+  async viewAllPost() {
+    const viewAllPost = await this.postService.viewAllPosts();
+    return viewAllPost;
+  }
 }
