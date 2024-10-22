@@ -9,6 +9,7 @@ import { AppService } from './app.service';
 import microserviceConfig from '../config/microservice';
 import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
+import { PostModule } from './post/post.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AuthModule } from './auth/auth.module';
       useClass: MongoDbConnectionService,
     }),
     AuthModule,
+    PostModule,
   ],
   controllers: [AppController],
   providers: [AppService],

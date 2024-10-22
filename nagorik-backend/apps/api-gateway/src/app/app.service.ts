@@ -32,4 +32,16 @@ export class AppService {
       })
     );
   }
+
+  createPost(payload: any) {
+    const pattern = { cmd: 'create-post' };
+    // const payload = { phone, fullname, password, email };
+    return this.apiClient.send<string>(pattern, payload).pipe(
+      map((response) => {
+        return {
+          response,
+        };
+      })
+    );
+  }
 }
