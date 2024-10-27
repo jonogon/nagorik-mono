@@ -1,9 +1,21 @@
 {
-  "name": "db-models",
+  "name": "@nagorik-backend/db-models",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/db-models/src",
   "projectType": "library",
   "tags": [],
   "// targets": "to see all targets run: nx show project db-models --web",
-  "targets": {}
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/db-models",
+        "tsConfig": "libs/db-models/tsconfig.lib.json",
+        "packageJson": "libs/db-models/package.json",
+        "main": "libs/db-models/src/index.ts",
+        "assets": ["libs/db-models/*.md"]
+      }
+    }
+  }
 }

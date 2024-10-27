@@ -15,10 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nagorik-backend/interfaces": ["libs/interfaces/src/index.ts"],
       "@nagorik-backend/db-connections": ["libs/db-connections/src/index.ts"],
       "@nagorik-backend/db-models": ["libs/db-models/src/index.ts"],
       "@nagorik-backend/dtos": ["libs/dtos/src/index.ts"],
-      "@nagorik-backend/interfaces": ["libs/interfaces/src/index.ts"],
       "@nagorik-backend/utils": ["libs/utils/src/index.ts"]
     }
   },

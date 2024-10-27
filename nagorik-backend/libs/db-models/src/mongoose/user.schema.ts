@@ -1,6 +1,14 @@
 import { Schema, model } from 'mongoose';
 
-import { UserInterface } from '@nagorik-backend/interfaces';
+type UserRoles = 'user' | 'developer' ;
+interface UserInterface {
+  phone: string;
+  fullName: string;
+  roles: UserRoles[];
+  email?: string;
+  isPhoneVerified: boolean;
+  password: string;
+}
 
 export const userSchema = new Schema<UserInterface>(
   {

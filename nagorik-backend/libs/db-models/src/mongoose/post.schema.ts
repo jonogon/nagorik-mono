@@ -1,6 +1,18 @@
 import { Schema, model } from 'mongoose';
 
-import { PostInterface } from '@nagorik-backend/interfaces';
+interface PostInterface {
+  userId: string;
+  category?: string;
+  subCategory?: string;
+  title: string;
+  description: string;
+  images?: string[];
+  tags?: string[];
+  location: {
+    type: string;
+    coordinates: number[];
+  };
+}
 
 export const postSchema = new Schema<PostInterface>(
   {

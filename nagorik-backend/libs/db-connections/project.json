@@ -1,9 +1,21 @@
 {
-  "name": "db-connections",
+  "name": "@nagorik-backend/db-connections",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/db-connections/src",
   "projectType": "library",
   "tags": [],
   "// targets": "to see all targets run: nx show project db-connections --web",
-  "targets": {}
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/db-connections",
+        "tsConfig": "libs/db-connections/tsconfig.lib.json",
+        "packageJson": "libs/db-connections/package.json",
+        "main": "libs/db-connections/src/index.ts",
+        "assets": ["libs/db-connections/*.md"]
+      }
+    }
+  }
 }
