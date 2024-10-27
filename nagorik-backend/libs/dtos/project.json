@@ -1,9 +1,21 @@
 {
-  "name": "dtos",
+  "name": "@nagorik-backend/dtos",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/dtos/src",
   "projectType": "library",
   "tags": [],
   "// targets": "to see all targets run: nx show project dtos --web",
-  "targets": {}
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/dtos",
+        "tsConfig": "libs/dtos/tsconfig.lib.json",
+        "packageJson": "libs/dtos/package.json",
+        "main": "libs/dtos/src/index.ts",
+        "assets": ["libs/dtos/*.md"]
+      }
+    }
+  }
 }

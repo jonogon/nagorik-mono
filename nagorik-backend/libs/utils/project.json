@@ -1,9 +1,21 @@
 {
-  "name": "utils",
+  "name": "@nagorik-backend/utils",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/utils/src",
   "projectType": "library",
   "tags": [],
   "// targets": "to see all targets run: nx show project utils --web",
-  "targets": {}
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/utils",
+        "tsConfig": "libs/utils/tsconfig.lib.json",
+        "packageJson": "libs/utils/package.json",
+        "main": "libs/utils/src/index.ts",
+        "assets": ["libs/utils/*.md"]
+      }
+    }
+  }
 }

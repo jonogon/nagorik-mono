@@ -1,6 +1,20 @@
 import { Schema, model, Model } from 'mongoose';
 
-import { UserOtpInterface } from '@nagorik-backend/interfaces';
+
+type DeliveryMethodType = 'sms' | 'email' | 'app-notification' | 'push-notification';
+type OtpReasonType = 'verify-phone' | 'reset-password' | 'forget-password' | 'edit-profile';
+
+interface UserOtpInterface {
+  otp: string;
+  userId: string;
+  deliveryMethod: {
+    type: DeliveryMethodType;
+    identity: string;
+  };
+  reason: OtpReasonType;
+  expiresAt: Date;
+  tryLimit: number;
+}
 
 const userOtpSchema = new Schema<UserOtpInterface>(
   {
