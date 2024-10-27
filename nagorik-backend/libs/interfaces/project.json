@@ -1,0 +1,21 @@
+{
+  "name": "@nagorik-backend/interfaces",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/interfaces/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project interfaces --web",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/interfaces",
+        "tsConfig": "libs/interfaces/tsconfig.lib.json",
+        "packageJson": "libs/interfaces/package.json",
+        "main": "libs/interfaces/src/index.ts",
+        "assets": ["libs/interfaces/*.md"]
+      }
+    }
+  }
+}

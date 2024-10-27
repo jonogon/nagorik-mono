@@ -20,4 +20,40 @@ export class AppService {
       })
     );
   }
+
+  createUser(phone: string, fullname: string, password: string, email?: string) {
+    const pattern = { cmd: 'create-user' };
+    const payload = { phone, fullname, password, email };
+    return this.apiClient.send<string>(pattern, payload).pipe(
+      map((response) => {
+        return {
+          response,
+        };
+      })
+    );
+  }
+
+  createPost(payload: any) {
+    const pattern = { cmd: 'create-post' };
+    // const payload = { phone, fullname, password, email };
+    return this.apiClient.send<string>(pattern, payload).pipe(
+      map((response) => {
+        return {
+          response,
+        };
+      })
+    );
+  }
+
+  viewAllPost(payload: any) {
+    const pattern = { cmd: 'view-all-posts' };
+    // const payload = { phone, fullname, password, email };
+    return this.apiClient.send<string>(pattern, payload).pipe(
+      map((response) => {
+        return {
+          response,
+        };
+      })
+    );
+  }
 }

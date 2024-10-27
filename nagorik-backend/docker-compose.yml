@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # Base image build
+  base:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nagorik-base:docker
+  api-service:
+    build:
+      context: .
+      dockerfile: apps/api-service/Dockerfile
+      args:
+        BUILD_IMAGE: nagorik-base
+        BUILD_TAG: docker
+    env_file:
+      - ./.env
+    depends_on:
+      - rabbitmq
+      - base
+    networks:
+      - app-network
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: apps/api-gateway/Dockerfile
+      args:
+        BUILD_IMAGE: nagorik-base
+        BUILD_TAG: docker
+    env_file:
+      - ./.env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - rabbitmq
+      - base
+    networks:
+      - app-network
+
+  rabbitmq:
+    image: rabbitmq
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
