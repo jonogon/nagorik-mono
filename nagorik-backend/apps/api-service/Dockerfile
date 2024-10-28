@@ -8,6 +8,5 @@ FROM node:20-alpine as output
 WORKDIR /app
 COPY --from=build /build/node_modules ./node_modules
 COPY --from=build /build/dist/apps/api-service .
-
 CMD ["node", "main.js"]
 
